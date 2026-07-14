@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Aniversário 🎂</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+!function e(m,a,h,f){var n=!!(m.Worker&&m.Blob&&m.Promise&&m.OffscreenCanvas&&m.OffscreenCanvasRenderingContext2D&&m.HTMLCanvasElement&&m.HTMLCanvasElement.prototype.transferControlToOffscreen&&m.URL&&m.URL.createObjectURL),O="function"==typeof Path2D&&"function"==typeof DOMMatrix,t=function(){if(!m.OffscreenCanvas)return!1;var t=new OffscreenCanvas(1,1),e=t.getContext("2d"),t=(e.fillRect(0,0,1,1),t.transferToImageBitmap());try{e.createPattern(t,"no-repeat")}catch(t){return!1}return!0}();function r(){}function g(t){var e=a.exports.Promise,e=void 0!==e?e:m.Promise;return"function"==typeof e?new e(t):(t(r,r),null)}o=t,i=new Map;var o,i,l,s,c,u,d,p,b,M,k={transform:function(t){if(o)return t;if(i.has(t))return i.get(t);var e=new OffscreenCanvas(t.width,t.height);return e.getContext("2d").drawImage(t,0,0),i.set(t,e),e},clear:function(){i.clear()}},y=(s=Math.floor(1e3/60),c={},u=0,t="function"==typeof requestAnimationFrame&&"function"==typeof cancelAnimationFrame?(l=function(a){var n=Math.random();return c[n]=requestAnimationFrame(function t(e){u===e||u+s-1<e?(u=e,delete c[n],a()):c[n]=requestAnimationFrame(t)}),n},function(t){c[t]&&cancelAnimationFrame(c[t])}):(l=function(t){return setTimeout(t,s)},function(t){return clearTimeout(t)}),{frame:l,cancel:t}),w=function(){if(d)return d;if(!h&&n){var t=["var CONFETTI, SIZE = {}, module = {};","("+e.toString()+")(this, module, true, SIZE);","onmessage = function(msg) {","  if (msg.data.options) {","    CONFETTI(msg.data.options).then(function () {","      if (msg.data.callback) {","        postMessage({ callback: msg.data.callback });","      }","    });","  } else if (msg.data.reset) {","    CONFETTI && CONFETTI.reset();","  } else if (msg.data.resize) {","    SIZE.width = msg.data.resize.width;","    SIZE.height = msg.data.resize.height;","  } else if (msg.data.canvas) {","    SIZE.width = msg.data.canvas.width;","    SIZE.height = msg.data.canvas.height;","    CONFETTI = module.exports.create(msg.data.canvas);","  }","}"].join("\n");try{d=new Worker(URL.createObjectURL(new Blob([t])))}catch(t){return"function"==typeof console.warn&&console.warn("🎊 Could not load worker",t),null}(i=d).init=function(t){t=t.transferControlToOffscreen();i.postMessage({canvas:t},[t])},i.fire=function(t,e,n){if(p)return o(t,null),p;var r=Math.random().toString(36).slice(2);return p=g(function(e){function a(t){t.data.callback===r&&(delete b[r],i.removeEventListener("message",a),p=null,k.clear(),n(),e())}i.addEventListener("message",a),o(t,r),b[r]=a.bind(null,{data:{callback:r}})})},i.reset=function(){for(var t in i.postMessage({reset:!0}),b)b[t](),delete b[t]}}function o(t,e){i.postMessage({options:t||{},callback:e})}var i;return d},v={particleCount:50,angle:90,spread:45,startVelocity:45,decay:.9,gravity:1,drift:0,ticks:200,x:.5,y:.5,shapes:["square","circle"],zIndex:100,colors:["#26ccff","#a25afd","#ff5e7e","#88ff5a","#fcff42","#ffa62d","#ff36ff"],disableForReducedMotion:!(b={}),scalar:1};function T(t,e,a){return t=(t&&null!=t[e]?t:v)[e],(e=a)?e(t):t}function E(t){return t<0?0:Math.floor(t)}function x(t){return parseInt(t,16)}function P(t){return t.map(C)}function C(t){t=String(t).replace(/[^0-9a-f]/gi,"");return{r:x((t=t.length<6?t[0]+t[0]+t[1]+t[1]+t[2]+t[2]:t).substring(0,2)),g:x(t.substring(2,4)),b:x(t.substring(4,6))}}function S(t){t.width=document.documentElement.clientWidth,t.height=document.documentElement.clientHeight}function B(t){var e=t.getBoundingClientRect();t.width=e.width,t.height=e.height}function I(t,e){e.x+=Math.cos(e.angle2D)*e.velocity+e.drift,e.y+=Math.sin(e.angle2D)*e.velocity+e.gravity,e.velocity*=e.decay,e.flat?(e.wobble=0,e.wobbleX=e.x+10*e.scalar,e.wobbleY=e.y+10*e.scalar,e.tiltSin=0,e.tiltCos=0,e.random=1):(e.wobble+=e.wobbleSpeed,e.wobbleX=e.x+10*e.scalar*Math.cos(e.wobble),e.wobbleY=e.y+10*e.scalar*Math.sin(e.wobble),e.tiltAngle+=.1,e.tiltSin=Math.sin(e.tiltAngle),e.tiltCos=Math.cos(e.tiltAngle),e.random=Math.random()+2);var a,n,r,o,i,l,s,c,h=e.tick++/e.totalTicks,f=e.x+e.random*e.tiltCos,u=e.y+e.random*e.tiltSin,d=e.wobbleX+e.random*e.tiltCos,m=e.wobbleY+e.random*e.tiltSin;if(t.fillStyle="rgba("+e.color.r+", "+e.color.g+", "+e.color.b+", "+(1-h)+")",t.beginPath(),O&&"path"===e.shape.type&&"string"==typeof e.shape.path&&Array.isArray(e.shape.matrix))t.fill((c=e.shape.path,g=e.shape.matrix,w=e.x,v=e.y,b=.1*Math.abs(d-f),y=.1*Math.abs(m-u),M=Math.PI/10*e.wobble,c=new Path2D(c),(p=new Path2D).addPath(c,new DOMMatrix(g)),(c=new Path2D).addPath(p,new DOMMatrix([Math.cos(M)*b,Math.sin(M)*b,-Math.sin(M)*y,Math.cos(M)*y,w,v])),c));else if("bitmap"===e.shape.type){var g=Math.PI/10*e.wobble,p=.1*Math.abs(d-f),b=.1*Math.abs(m-u),M=e.shape.bitmap.width*e.scalar,y=e.shape.bitmap.height*e.scalar,w=new DOMMatrix([Math.cos(g)*p,Math.sin(g)*p,-Math.sin(g)*b,Math.cos(g)*b,e.x,e.y]),v=(w.multiplySelf(new DOMMatrix(e.shape.matrix)),t.createPattern(k.transform(e.shape.bitmap),"no-repeat"));v.setTransform(w),t.globalAlpha=1-h,t.fillStyle=v,t.fillRect(e.x-M/2,e.y-y/2,M,y),t.globalAlpha=1}else if("circle"===e.shape)t.ellipse?t.ellipse(e.x,e.y,Math.abs(d-f)*e.ovalScalar,Math.abs(m-u)*e.ovalScalar,Math.PI/10*e.wobble,0,2*Math.PI):(c=t,h=e.x,a=e.y,n=Math.abs(d-f)*e.ovalScalar,r=Math.abs(m-u)*e.ovalScalar,o=Math.PI/10*e.wobble,i=0,l=2*Math.PI,c.save(),c.translate(h,a),c.rotate(o),c.scale(n,r),c.arc(0,0,1,i,l,s),c.restore());else if("star"===e.shape)for(var x,C,I=Math.PI/2*3,T=4*e.scalar,E=8*e.scalar,P=(e.x,e.y,5),S=Math.PI/P;P--;)x=e.x+Math.cos(I)*E,C=e.y+Math.sin(I)*E,t.lineTo(x,C),I+=S,x=e.x+Math.cos(I)*T,C=e.y+Math.sin(I)*T,t.lineTo(x,C),I+=S;else t.moveTo(Math.floor(e.x),Math.floor(e.y)),t.lineTo(Math.floor(e.wobbleX),Math.floor(u)),t.lineTo(Math.floor(d),Math.floor(m)),t.lineTo(Math.floor(f),Math.floor(e.wobbleY));return t.closePath(),t.fill(),e.tick<e.totalTicks}function F(a,t,n,r,o){var i,l,s=t.slice(),c=a.getContext("2d"),e=g(function(t){function e(){i=l=null,c.clearRect(0,0,r.width,r.height),k.clear(),o(),t()}i=y.frame(function t(){!h||r.width===f.width&&r.height===f.height||(r.width=a.width=f.width,r.height=a.height=f.height),r.width||r.height||(n(a),r.width=a.width,r.height=a.height),c.clearRect(0,0,r.width,r.height),(s=s.filter(function(t){return I(c,t)})).length?i=y.frame(t):e()}),l=e});return{addFettis:function(t){return s=s.concat(t),e},canvas:a,promise:e,reset:function(){i&&y.cancel(i),l&&l()}}}function A(x,t){var C,i=!x,l=!!T(t||{},"resize"),s=!1,c=T(t,"disableForReducedMotion",Boolean),h=n&&!!T(t||{},"useWorker")?w():null,I=i?S:B,f=!(!x||!h)&&!!x.__confetti_initialized,u="function"==typeof matchMedia&&matchMedia("(prefers-reduced-motion)").matches;function d(t,e,a){for(var n,r,o,i=T(t,"particleCount",E),l=T(t,"angle",Number),s=T(t,"spread",Number),c=T(t,"startVelocity",Number),h=T(t,"decay",Number),f=T(t,"gravity",Number),u=T(t,"drift",Number),d=T(t,"colors",P),m=T(t,"ticks",Number),g=T(t,"shapes"),p=T(t,"scalar"),b=!!T(t,"flat"),M=((t=T(t=t,"origin",Object)).x=T(t,"x",Number),t.y=T(t,"y",Number),i),y=[],w=x.width*t.x,v=x.height*t.y;M--;)y.push((o={x:w,y:v,angle:l,spread:s,startVelocity:c,color:d[M%d.length],shape:g[r=0,o=g.length,Math.floor(Math.random()*(o-r))+r],ticks:m,decay:h,gravity:f,drift:u,scalar:p,flat:b},n=r=void 0,r=o.angle*(Math.PI/180),n=o.spread*(Math.PI/180),{x:o.x,y:o.y,wobble:10*Math.random(),wobbleSpeed:Math.min(.11,.1*Math.random()+.05),velocity:.5*o.startVelocity+Math.random()*o.startVelocity,angle2D:-r+(.5*n-Math.random()*n),tiltAngle:(.5*Math.random()+.25)*Math.PI,color:o.color,shape:o.shape,tick:0,totalTicks:o.ticks,decay:o.decay,drift:o.drift,random:Math.random()+2,tiltSin:0,tiltCos:0,wobbleX:0,wobbleY:0,gravity:3*o.gravity,ovalScalar:.6,scalar:o.scalar,flat:o.flat}));return C?C.addFettis(y):(C=F(x,y,I,e,a)).promise}function e(t){var e=c||T(t,"disableForReducedMotion",Boolean),a=T(t,"zIndex",Number);if(e&&u)return g(function(t){t()});i&&C?x=C.canvas:i&&!x&&(e=a,(a=document.createElement("canvas")).style.position="fixed",a.style.top="0px",a.style.left="0px",a.style.pointerEvents="none",a.style.zIndex=e,x=a,document.body.appendChild(x)),l&&!f&&I(x);var n={width:x.width,height:x.height};function r(){var t;if(h)return I(t={getBoundingClientRect:function(){if(!i)return x.getBoundingClientRect()}}),void h.postMessage({resize:{width:t.width,height:t.height}});n.width=n.height=null}function o(){C=null,l&&(s=!1,m.removeEventListener("resize",r)),i&&x&&(document.body.removeChild(x),x=null,f=!1)}return h&&!f&&h.init(x),f=!0,h&&(x.__confetti_initialized=!0),l&&!s&&(s=!0,m.addEventListener("resize",r,!1)),h?h.fire(t,n,o):d(t,n,o)}return e.reset=function(){h&&h.reset(),C&&C.reset()},e}function R(){return M=M||A(null,{useWorker:!1,resize:!0})}a.exports=function(){return R().apply(this,arguments)},a.exports.reset=function(){R().reset()},a.exports.create=A,a.exports.shapeFromPath=function(t){if(!O)throw new Error("path confetti are not supported in this browser");"string"==typeof t?e=t:(e=t.path,u=t.matrix);var e,a=new Path2D(e),n=document.createElement("canvas").getContext("2d");if(!u){for(var r=1e3,o=1e3,i=0,l=0,s=0;s<1e3;s+=2)for(var c=0;c<1e3;c+=2)n.isPointInPath(a,s,c,"nonzero")&&(r=Math.min(r,s),o=Math.min(o,c),i=Math.max(i,s),l=Math.max(l,c));var t=i-r,h=l-o,f=Math.min(10/t,10/h),u=[f,0,0,f,-Math.round(t/2+r)*f,-Math.round(h/2+o)*f]}return{type:"path",path:e,matrix:u}},a.exports.shapeFromText=function(t){var e,a=1,n="#000000",r='"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "EmojiOne Color", "Android Emoji", "Twemoji Mozilla", "system emoji", sans-serif';"string"==typeof t?e=t:(e=t.text,a="scalar"in t?t.scalar:a,r="fontFamily"in t?t.fontFamily:r,n="color"in t?t.color:n);var r=(t=10*a)+"px "+r,o=(t=new OffscreenCanvas(t,t)).getContext("2d"),i=(o.font=r,o.measureText(e)),l=Math.ceil(i.actualBoundingBoxRight+i.actualBoundingBoxLeft),s=Math.ceil(i.actualBoundingBoxAscent+i.actualBoundingBoxDescent),c=i.actualBoundingBoxLeft+2,i=i.actualBoundingBoxAscent+2,r=(l+=4,s+=4,(o=(t=new OffscreenCanvas(l,s)).getContext("2d")).font=r,o.fillStyle=n,o.fillText(e,c,i),1/a);return{type:"bitmap",bitmap:t.transferToImageBitmap(),matrix:[r,0,0,r,-l*r/2,-s*r/2]}}}(function(){return"undefined"!=typeof window?window:"undefined"!=typeof self?self:this||{}}(),module={exports:{}},!1);
+window.confetti = module.exports;
+</script>
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, #ffd6e8 0%, #ffe9d6 45%, #ffd6f0 100%);
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  /* ---- floating soft background circles ---- */
+  .bg-blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.35;
+    z-index: 0;
+  }
+  .bg-blob.b1 { width: 300px; height: 300px; background: #ff9ec4; top: -60px; left: -60px; }
+  .bg-blob.b2 { width: 240px; height: 240px; background: #ffd27a; bottom: -40px; right: -40px; }
+
+  /* ---- ENVELOPE ---- */
+  #envelope-scene {
+    position: relative;
+    width: 320px;
+    max-width: 85vw;
+    height: 220px;
+    cursor: pointer;
+    z-index: 2;
+    transition: opacity 0.6s ease;
+  }
+  #envelope-scene.hidden { opacity: 0; pointer-events: none; }
+
+  .envelope {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+  }
+  .env-body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f4e2c8;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(180, 90, 100, 0.35);
+    overflow: hidden;
+    z-index: 2;
+  }
+  .env-body::before {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-bottom: 110px solid #ecd3ae;
+  }
+  .env-flap {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 110px solid #f0c7d6;
+    transform-origin: top;
+    transition: transform 0.9s cubic-bezier(.6,-0.28,.74,.05);
+    z-index: 3;
+  }
+  #envelope-scene.open .env-flap {
+    transform: rotateX(180deg);
+  }
+  .seal {
+    position: absolute;
+    top: 78px; left: 50%;
+    transform: translateX(-50%);
+    width: 46px; height: 46px;
+    background: radial-gradient(circle at 35% 30%, #ff8fae, #e0466f);
+    border-radius: 50%;
+    display: flex; align-items:center; justify-content:center;
+    color: white; font-size: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    z-index: 4;
+    animation: pulse-seal 1.8s infinite ease-in-out;
+  }
+  @keyframes pulse-seal {
+    0%,100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.08); }
+  }
+  .letter {
+    position: absolute;
+    top: 14px; left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: 78%;
+    height: 78%;
+    background: #fffaf3;
+    border-radius: 4px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    z-index: 1;
+    transition: transform 1s ease 0.15s;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    padding: 16px;
+    font-size: 13px;
+    color: #b04a68;
+  }
+  #envelope-scene.open .letter {
+    transform: translateX(-50%) translateY(-190px);
+    z-index: 5;
+  }
+  .hint {
+    position: absolute;
+    bottom: -34px; left: 0; right: 0;
+    text-align: center;
+    color: #b0577a;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    animation: bob 1.6s infinite ease-in-out;
+  }
+  @keyframes bob {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ---- CELEBRATION SCENE ---- */
+  #celebration {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 1s ease;
+    padding: 20px;
+    text-align: center;
+  }
+  #celebration.show { display: flex; opacity: 1; }
+
+  .flower-wrap {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 10px;
+  }
+  .petal {
+    position: absolute;
+    width: 42px; height: 84px;
+    background: linear-gradient(to top, #ff9ec7 0%, #ffdcec 38%, #ffffff 72%, #ffffff 100%);
+    clip-path: polygon(50% 0%, 66% 6%, 80% 26%, 87% 50%, 78% 74%, 64% 94%, 50% 100%, 36% 94%, 22% 74%, 13% 50%, 20% 26%, 34% 6%);
+    top: 50%; left: 50%;
+    transform-origin: 50% 100%;
+    transform: translate(-50%,-100%) rotate(var(--r)) scale(0);
+    animation: bloom 0.7s ease forwards;
+    animation-delay: var(--d);
+    box-shadow: 0 0 6px rgba(255, 158, 199, 0.25);
+    z-index: 1;
+  }
+  @keyframes bloom {
+    to { transform: translate(-50%,-100%) rotate(var(--r)) scale(1); }
+  }
+  .stamen {
+    position: absolute;
+    width: 3px; height: 26px;
+    background: linear-gradient(to top, #cfe3ba, #eef7df);
+    top: 50%; left: 50%;
+    transform-origin: 50% 100%;
+    transform: translate(-50%,-100%) rotate(var(--r)) scaleY(0);
+    animation: stamen-grow 0.5s ease forwards;
+    animation-delay: var(--d);
+    border-radius: 2px;
+    z-index: 2;
+  }
+  .stamen::after {
+    content: "";
+    position: absolute;
+    top: -6px; left: 50%;
+    width: 9px; height: 14px;
+    background: linear-gradient(160deg, #d97b3f, #a85a2a);
+    border-radius: 50%;
+    transform: translateX(-50%) rotate(20deg);
+  }
+  @keyframes stamen-grow {
+    to { transform: translate(-50%,-100%) rotate(var(--r)) scaleY(1); }
+  }
+  .flower-center {
+    position: absolute;
+    width: 20px; height: 20px;
+    background: radial-gradient(circle, #fff6d9, #e9c46a);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    animation: pop-center 0.5s ease forwards 0.9s;
+    box-shadow: 0 0 10px rgba(233, 196, 106, 0.6);
+    z-index: 3;
+  }
+  @keyframes pop-center {
+    to { transform: translate(-50%,-50%) scale(1); }
+  }
+
+  .photo-frame {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    box-shadow: 0 12px 30px rgba(200, 60, 100, 0.4);
+    overflow: hidden;
+    opacity: 0;
+    transform: scale(0.4);
+    animation: appear 0.8s ease forwards 1.1s, spin-pulse 6s ease-in-out infinite 1.9s;
+    margin-bottom: 18px;
+  }
+  @keyframes appear {
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes spin-pulse {
+    0%   { transform: rotate(0deg) scale(1); }
+    25%  { transform: rotate(180deg) scale(1.12); }
+    50%  { transform: rotate(360deg) scale(1); }
+    75%  { transform: rotate(540deg) scale(0.92); }
+    100% { transform: rotate(720deg) scale(1); }
+  }
+  .photo-frame img {
+    width: 100%; height: 100%; object-fit: cover;
+    display: block;
+  }
+
+  h1.title {
+    font-size: 26px;
+    color: #c23e6b;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.4s;
+    margin-bottom: 6px;
+  }
+  p.msg {
+    font-size: 15px;
+    color: #8c4a5e;
+    max-width: 340px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.7s;
+    line-height: 1.5;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .replay {
+    margin-top: 22px;
+    padding: 10px 22px;
+    border: none;
+    border-radius: 30px;
+    background: #ff6fa5;
+    color: white;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 2s;
+    box-shadow: 0 6px 16px rgba(255,111,165,0.4);
+  }
+</style>
+</head>
+<body>
+
+  <div class="bg-blob b1"></div>
+  <div class="bg-blob b2"></div>
+
+  <div id="envelope-scene">
+    <div class="envelope">
+      <div class="letter">Pra você abrir<br>com carinho 💌</div>
+      <div class="env-body"></div>
+      <div class="env-flap"></div>
+      <div class="seal">♥</div>
+    </div>
+    <div class="hint">toque no envelope</div>
+  </div>
+
+  <div id="celebration">
+    <div class="flower-wrap" id="flower"></div>
+
+    <div class="photo-frame">
+      <img src="Design sem nome (4).png" alt="foto dela">
+    </div>
+
+    <h1 class="title">Feliz Aniversário! 🎉</h1>
+    <p class="msg">
+      Hoje o mundo fica mais feliz e mais bonito, porque é o seu dia. 
+      Te amo muito, meu amor. Espero que o seu dia seja tão feliz, leve e cheio de alegria quanto você faz os meus serem. Você merece tudo de mais lindo que existe.
+      Feliz aniversário! 💗
+    </p>
+
+    <button class="replay" onclick="location.reload()">ver de novo</button>
+  </div>
+
+  <audio id="bg-music" src="musica.mp3" preload="auto"></audio>
+
+<script>
+  // gera as tépalas do lírio
+  const flower = document.getElementById('flower');
+  const petalCount = 6;
+  for (let i = 0; i < petalCount; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const angle = (360 / petalCount) * i;
+    p.style.setProperty('--r', angle + 'deg');
+    p.style.setProperty('--d', (0.15 + i * 0.06) + 's');
+    flower.appendChild(p);
+  }
+  // estames finos entre as tépalas
+  const stamenCount = 6;
+  for (let i = 0; i < stamenCount; i++) {
+    const s = document.createElement('div');
+    s.className = 'stamen';
+    const angle = (360 / petalCount) * i + (360 / petalCount) / 2;
+    s.style.setProperty('--r', angle + 'deg');
+    s.style.setProperty('--d', (0.55 + i * 0.05) + 's');
+    flower.appendChild(s);
+  }
+  const center = document.createElement('div');
+  center.className = 'flower-center';
+  flower.appendChild(center);
+
+  const music = document.getElementById('bg-music');
+
+  // "aquece" o áudio silenciosamente assim que a página carrega,
+  // pra tocar sem atraso de buffer quando o envelope for aberto
+  music.muted = true;
+  music.play().then(() => {
+    music.pause();
+    music.currentTime = 0;
+    music.muted = false;
+  }).catch(() => {});
+
+  const scene = document.getElementById('envelope-scene');
+  const celebration = document.getElementById('celebration');
+  let opened = false;
+
+  scene.addEventListener('click', () => {
+    if (opened) return;
+    opened = true;
+
+    scene.classList.add('open');
+
+    music.muted = false;
+    music.currentTime = 0;
+    music.play().catch(err => console.warn('não foi possível tocar a música:', err));
+
+    // confete estourando
+    const duration = 2500;
+    const end = Date.now() + duration;
+    (function frame() {
+      confetti({ particleCount: 6, angle: 60, spread: 65, origin: { x: 0 }, colors: ['#ff6fa5','#ffc93c','#ff9ec7','#ffffff'] });
+      confetti({ particleCount: 6, angle: 120, spread: 65, origin: { x: 1 }, colors: ['#ff6fa5','#ffc93c','#ff9ec7','#ffffff'] });
+      if (Date.now() < end) requestAnimationFrame(frame);
+    })();
+    confetti({ particleCount: 150, spread: 100, origin: { y: 0.5 }, colors: ['#ff6fa5','#ffc93c','#ff9ec7','#ffffff'] });
+
+    setTimeout(() => {
+      scene.classList.add('hidden');
+      celebration.classList.add('show');
+    }, 1000);
+  });
+</script>
+</body>
+</html>
